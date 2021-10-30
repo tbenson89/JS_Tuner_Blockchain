@@ -18,3 +18,5 @@ TunerChain.addBlock(new Block(Date.now().toString(), [{ from: "nguyenphuminh", t
 
 
 console.log(TunerChain.chain);
+console.log(TunerChain.chain[1].data);
+console.log(TunerChain.chain[2].data);

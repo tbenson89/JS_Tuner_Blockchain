@@ -13,10 +13,10 @@ class Block {
         this.nonce = 0;
     }
 
-    getHash() { return SHA256(this.prevHash + this.timestamp + JSON.stringify(this.data)); }
+    getHash() { return SHA256(this.prevHash + this.timestamp + JSON.stringify(this.data) + this.nonce); }
 
     mine(difficulty) {
-        console.log("Mining has begun, process can take a long time!");
+        console.log("Mining has begun!");
         // Basically, loops until the substring of the hash with length of 0 is equal to the string 0...
         while (this.hash.substring(0, difficulty) !== Array(difficulty + 1).join("0")) {
             // We increases our nonce so that we can get a whole different hash.
