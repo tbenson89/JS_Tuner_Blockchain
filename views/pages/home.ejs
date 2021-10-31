@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>The Tuner Chain</title>
+</head>
+<body>
+    <!-- 
+        /* Features of TunerChain */
+            Blockchain is the blockchain class, which means you can inherit this class and upgrade TunerChain if you want.
+            TunerChain is a "Blockchain" object, which is ready to use.
+            TunerChain.chain // The whole chain
+            TunerChain.difficulty // The difficulty
+            TunerChain.getLastBlock() // The latest block
+            TunerChain.isValid() // "true" if chain is valid, "false" otherwise.
+            new Block(timestamp /*string - "optional"*/, data /*array - "optional"*/) // Creates a new "Block" object.
+            TunerChain.addBlock(block) // Mines the block and add the block to the chain. 
+    -->
+    <nav class="navbar navbar-dark bg-dark justify-content-between">
+        <a class="navbar-brand" href="#">The Tuner Chain</a>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </nav>
+    <main>
+        <div class="container-fluid">
+            <h1>Transactions</h1>
+            <% allBlocks.forEach(function(block) { %>
+                <div class="card d-inline-flex justify-content-between align-items-top m-2">
+                    <div class="card-body">
+                        <h5 class="card-title">Block <%= block.nonce %> </h5>
+                        <h6 class="card-subtitle mb-2 text-muted"><%= block.hash %></h6>
+                        <p class="card-text">
+                            <% block.data.forEach(function(data) { %>
+                                <% if ( data.message ) { %>
+                                    <%= data.message %>
+                                <% } else { %>  
+                                    <%= data.from %> sent <%= data.amount %> Tuner TKNS -> <%= data.to %>
+                                <% } %>
+                            <% }) %>
+                        </p>
+                        <p class="text-muted">
+                            <%= block.prevHash %>
+                            <% if ( !block.prevHash ) { %>
+                                XXXX
+                            <% } %>
+                        </p>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </main>
+    
+
+    <!-- JavaScript Dependencies -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

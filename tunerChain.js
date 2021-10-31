@@ -36,7 +36,7 @@ class Blockchain {
 
     constructor() {
         // Create our genesis block (Parent)
-        this.chain = [new Block(Date.now().toString())];
+        this.chain = [new Block(Date.now().toString(), [{ message: "I am the parent of the blockchain -- Tuner Genesis"}])];
         this.difficulty = 1; // based on how many blocks mined!
     }
 
